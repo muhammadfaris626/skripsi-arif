@@ -232,6 +232,7 @@
                     <TableRow>
                         <TableHeaderCell>NO</TableHeaderCell>
                         <TableHeaderCell>NAMA</TableHeaderCell>
+                        <TableHeaderCell>USERNAME</TableHeaderCell>
                         <TableHeaderCell>EMAIL</TableHeaderCell>
                         <TableHeaderCell>TANGGAL DIBUAT</TableHeaderCell>
                         <TableHeaderCell>TANGGAL DIUBAH</TableHeaderCell>
@@ -242,6 +243,7 @@
                     <TableRow v-for="(data, index) in fetchData.data" :key="data.id" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                         <TableDataCell :status="'number'">{{ index+1 }}</TableDataCell>
                         <TableDataCell :status="'record'">{{ data.name }}</TableDataCell>
+                        <TableDataCell :status="'record'">{{ data.username }}</TableDataCell>
                         <TableDataCell :status="'record'">{{ data.email }}</TableDataCell>
                         <TableDataCell :status="'record'">{{ data.created_at }}</TableDataCell>
                         <TableDataCell :status="'record'">{{ data.updated_at }}</TableDataCell>

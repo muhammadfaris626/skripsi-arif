@@ -78,6 +78,7 @@ class UserController extends Controller {
         Gate::authorize('update', $data);
         $data->update([
             'name' => $request->name,
+            'username' => $request->username,
             'email' => $request->email
         ]);
         $role = Role::find($request->roles);
