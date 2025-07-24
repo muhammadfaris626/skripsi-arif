@@ -23,7 +23,7 @@ class UserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'  => ['required', 'string', 'max:255', 'min:6'],
+            'name'  => ['required', 'string', 'max:255', 'min:4'],
             'username' => ['required', 'string', Rule::unique('users', 'username')->ignore($this->id)],
             'email' => [
                 'required','string', 'email', 'max:255',
