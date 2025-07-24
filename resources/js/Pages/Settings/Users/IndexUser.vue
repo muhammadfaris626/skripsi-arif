@@ -16,6 +16,7 @@
     const form = useForm({
         id: "",
         name: "",
+        username: "",
         email: "",
         password: "",
         roles: "",
@@ -79,6 +80,7 @@
         showModalUpdate.value = true;
         form.id = data.id;
         form.name = data.name;
+        form.username = data.username;
         form.email = data.email;
         form.roles = data.roles[0]['id'];
     }
@@ -100,6 +102,8 @@
 
     }
     const ubahData = () => {
+        console.log(form);
+
         form.put(route('users.update', form.id), {
             onSuccess: () => {
                 form.reset();
@@ -359,6 +363,16 @@
                                     v-model="form.name"
                                 />
                                 <InputError :message="form.errors.name" />
+                            </div>
+                            <div class="mb-2">
+                                <InputLabel for="username" value="Username" />
+                                <TextInput
+                                    id="username"
+                                    type="text"
+                                    class="block w-full"
+                                    v-model="form.username"
+                                />
+                                <InputError :message="form.errors.username" />
                             </div>
                             <div class="mb-2">
                                 <InputLabel for="email" value="Email" />
