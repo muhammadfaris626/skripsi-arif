@@ -84,8 +84,8 @@ class ApiDataController extends Controller
             $whatsappMessage = "Resident tidak ditemukan";
         }
 
-        $whatsappNumber  = '082151112105';
-        $whatsappToken   = '1ASQEtpn-MR3AdxVg!Gn';
+        $whatsappNumber  = '085822257609';
+        $whatsappToken   = '4MVzro5LvNDPoQ44ANSN';
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
