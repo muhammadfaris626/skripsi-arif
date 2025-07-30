@@ -25,7 +25,9 @@ class CoverLetterHistoryResource extends JsonResource
             'approver_id' => PositionResource::collection(Position::where('id', $this->approver_id)->get()),
             'status' => $this->status,
             'is_active' => $this->is_active,
-            'description' => $this->description
+            'description' => $this->description,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at
         ];
     }
 }

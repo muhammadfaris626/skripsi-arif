@@ -73,18 +73,19 @@ class ApiDataController extends Controller
         }
     }
 
-    public function testingWhatsapp() {
+    public function testingWhatsapp($dataList) {
         // Notification Whatsapp
-        $resident = Resident::where('resident_number', '7371146505820010')->first();
-        $nomor = "007/RT.001/RW.003/KTB/X/2024";
-        $tanggal = "07 Oktober 2024";
-        if ($resident) {
-            $whatsappMessage = 'Halo, *'.$resident->resident_name."*\n\nPermohonan Surat Pengantar Anda dengan nomor referensi *".$nomor."* telah berhasil diajukan pada *".$tanggal."*. Kami akan segera memprosesnya, dan Anda akan menerima pemberitahuan lebih lanjut setelah surat selesai diproses. \n\nHarap menunggu konfirmasi lebih lanjut.\n\nTerima kasih!\n\nSalam hormat,\nSIAK Kelurahan Katimbang";
+        $resident = Resident::where('resident_number', $dataList['resident_number'])->first();
+        $nomor = $dataList['nomor'];
+        $tanggal = $dataList['tanggal'];
+
+        if ($dataList['total_approval'] == $dataList['disetujui']) {
+            $whatsappMessage = "Halo, *" . $resident->resident_name . "*\n\nPermohonan " . $dataList['type'] . " Anda dengan nomor surat *" . $nomor . "* telah berhasil *DISETUJUI* pada tanggal *" . $tanggal . "*.\n\nSilahkan datang ke kantor kelurahan untuk mengambil surat Anda, atau hubungi petugas jika ada pertanyaan lebih lanjut.\n\nTerima kasih.\n\nSalam hormat, SIAK Kelurahan Katimbang";
         } else {
-            $whatsappMessage = "Resident tidak ditemukan";
+            $whatsappMessage = 'Halo, *'.$resident->resident_name."*\n\nPermohonan" . $dataList['type'] . "Anda dengan nomor referensi *".$nomor."* telah berhasil diajukan pada *".$tanggal."*. Kami akan segera memprosesnya, dan Anda akan menerima pemberitahuan lebih lanjut setelah surat selesai diproses. \n\nHarap menunggu konfirmasi lebih lanjut.\n\nTerima kasih!\n\nSalam hormat,\nSIAK Kelurahan Katimbang";
         }
 
-        $whatsappNumber  = '085822257609';
+        $whatsappNumber  = $dataList['whatsapp'];
         $whatsappToken   = '4MVzro5LvNDPoQ44ANSN';
         $curl = curl_init();
 

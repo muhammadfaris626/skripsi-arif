@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Api\ApiDataController;
 use App\Http\Resources\BusinessCertificateHistoryResource;
 use App\Http\Resources\CoverLetterHistoryResource;
 use App\Http\Resources\DomicileCertificateHistoryResource;
@@ -140,6 +141,8 @@ class NotificationController extends Controller {
                     'is_active' => '1'
                 ]);
             }
+            $countApproval = CoverLetterHistory::where('certificate_id', $history->certificate_id)->count();
+            $approvalDisetujui = CoverLetterHistory::where('certificate_id', $history->certificate_id)->where('status', 'Disetujui')->count();
         } elseif ($request->approvalCategory == "Surat Keterangan Domisili") {
             $history = DomicileCertificateHistory::find($id);
             $history->update([
@@ -157,6 +160,8 @@ class NotificationController extends Controller {
                     'validity_period' => Carbon::now()->addMonth()
                 ]);
             }
+            $countApproval = DomicileCertificateHistory::where('certificate_id', $history->certificate_id)->count();
+            $approvalDisetujui = DomicileCertificateHistory::where('certificate_id', $history->certificate_id)->where('status', 'Disetujui')->count();
         } elseif ($request->approvalCategory == "Surat Keterangan Usaha") {
             $history = BusinessCertificateHistory::find($id);
             $history->update([
@@ -174,6 +179,8 @@ class NotificationController extends Controller {
                     'validity_period' => Carbon::now()->addMonth()
                 ]);
             }
+            $countApproval = BusinessCertificateHistory::where('certificate_id', $history->certificate_id)->count();
+            $approvalDisetujui = BusinessCertificateHistory::where('certificate_id', $history->certificate_id)->where('status', 'Disetujui')->count();
         } elseif ($request->approvalCategory == "Surat Keterangan Belum Menikah") {
             $history = UnmarriedCertificateHistory::find($id);
             $history->update([
@@ -191,6 +198,8 @@ class NotificationController extends Controller {
                     'validity_period' => Carbon::now()->addMonth()
                 ]);
             }
+            $countApproval = UnmarriedCertificateHistory::where('certificate_id', $history->certificate_id)->count();
+            $approvalDisetujui = UnmarriedCertificateHistory::where('certificate_id', $history->certificate_id)->where('status', 'Disetujui')->count();
         } elseif ($request->approvalCategory == "Surat Keterangan Tidak Mampu") {
             $history = InabilityCertificateHistory::find($id);
             $history->update([
@@ -208,7 +217,21 @@ class NotificationController extends Controller {
                     'validity_period' => Carbon::now()->addMonth()
                 ]);
             }
+            $countApproval = InabilityCertificateHistory::where('certificate_id', $history->certificate_id)->count();
+            $approvalDisetujui = InabilityCertificateHistory::where('certificate_id', $history->certificate_id)->where('status', 'Disetujui')->count();
         }
+        $countApproval =
+        $dataList = [
+            'type' => $request->approvalCategory,
+            'resident_number' => $history->certificate->resident->resident_number,
+            'nomor' => $history->certificate->request_number,
+            'whatsapp' => $history->certificate->resident->phone_number,
+            'tanggal' => $history->updated_at->translatedFormat('d F Y'),
+            'total_approval' => $countApproval,
+            'disetujui' => $approvalDisetujui
+        ];
+        $apiWhatsapp = new ApiDataController();
+        $apiWhatsapp->testingWhatsapp($dataList);
         Session::flash('toast', 'Persetujuan surat berhasil dilakukan.');
         return back();
     }
