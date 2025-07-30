@@ -80,7 +80,7 @@ class ApiDataController extends Controller
         $tanggal = $dataList['tanggal'];
 
         if ($dataList['total_approval'] == $dataList['disetujui']) {
-            $whatsappMessage = "Halo, *" . $resident->resident_name . "*\n\nPermohonan " . $dataList['type'] . " Anda dengan nomor surat *" . $nomor . "* telah berhasil *DISETUJUI* pada tanggal *" . $tanggal . "*.\n\nUntuk mengunduh atau melihat surat Anda, silahkan kunjungi website berikut:\nhttps://siakkelurahankatimbang.web.id.\n\nJika ada pertanyaan lebih lanjut, silahkan hubungi petugas kami.\n\nTerima kasih.\n\nSalam hormat, SIAK Kelurahan Katimbang";
+            $whatsappMessage = "Halo, *" . $resident->resident_name . "*\n\nPermohonan " . $dataList['type'] . " Anda dengan nomor surat *" . $nomor . "* telah berhasil *DISETUJUI* pada tanggal *" . $tanggal . "*.\n\nUntuk mengunduh atau melihat surat Anda, silahkan kunjungi website berikut:\nhttps://siakkelurahankatimbang.web.id\n\nJika ada pertanyaan lebih lanjut, silahkan hubungi petugas kami.\n\nTerima kasih.\n\nSalam hormat, SIAK Kelurahan Katimbang";
         } else {
             $whatsappMessage = 'Halo, *'.$resident->resident_name."*\n\nPermohonan " . $dataList['type'] . " Anda dengan nomor referensi *".$nomor."* telah berhasil diajukan pada *".$tanggal."*. Kami akan segera memprosesnya, dan Anda akan menerima pemberitahuan lebih lanjut setelah surat selesai diproses. \n\nHarap menunggu konfirmasi lebih lanjut.\n\nTerima kasih!\n\nSalam hormat,\nSIAK Kelurahan Katimbang";
         }
