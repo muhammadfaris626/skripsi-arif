@@ -86,7 +86,7 @@ class ApiDataController extends Controller
         }
 
         $whatsappNumber  = $dataList['whatsapp'];
-        $whatsappToken   = '4MVzro5LvNDPoQ44ANSN';
+        $whatsappToken   = 'U58PdWHooqzp63SLAVZX';
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
