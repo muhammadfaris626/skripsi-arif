@@ -17,4 +17,9 @@ export default defineConfig({
             },
         }),
     ],
+    server: {
+        cors: {
+            origin: 'https://skripsi-arif.test',
+        }
+    }
 });
