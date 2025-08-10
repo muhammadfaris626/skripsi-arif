@@ -7,7 +7,7 @@ import { Link } from '@inertiajs/vue3';
     <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
         <div>
             <Link href="/" class="flex flex-col items-center justify-center text-center">
-                <img :src="'/images/logo-kecamatan-1.png'" class="w-20 mb-2" alt="FlowBite Logo" />
+                <img :src="'/images/logo-surat.png'" class="w-20 mb-2" alt="FlowBite Logo" />
                 <p class="text-xl font-semibold">
                     SIAK KELURAHAN KATIMBANG
                 </p>

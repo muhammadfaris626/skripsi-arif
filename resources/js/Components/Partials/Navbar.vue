@@ -13,7 +13,7 @@
                         </svg>
                     </button> -->
                     <Link href="/dashboard" class="flex ms-2 md:me-24">
-                        <img :src="'/images/logo-kecamatan-1.png'" class="h-8 me-3" alt="FlowBite Logo" />
+                        <img :src="'/images/logo-surat.png'" class="h-8 me-3" alt="FlowBite Logo" />
                         <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">SIAK Kelurahan Katimbang</span>
                     </Link>
                 </div>
