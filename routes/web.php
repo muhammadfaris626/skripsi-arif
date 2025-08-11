@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ApprovalSettingController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\BirthCertificateController;
 use App\Http\Controllers\BusinessCertificateController;
 use App\Http\Controllers\CertificateCategoryController;
@@ -62,7 +63,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/notifications', [NotificationController::class, 'index'])->name('notifications.index');
     Route::get('/notifications/certificate/{certificate}', [NotificationController::class, 'certificate'])->name('notifications.certificate');
     Route::put('/notification/certificate/{id}', [NotificationController::class, 'update'])->name('notifications.update');
-
 
 
 

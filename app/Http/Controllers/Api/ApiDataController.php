@@ -9,6 +9,7 @@ use App\Models\CoverLetterHistory;
 use App\Models\District;
 use App\Models\DomicileCertificateHistory;
 use App\Models\Employee;
+use App\Models\FamilyCard;
 use App\Models\InabilityCertificateHistory;
 use App\Models\MarriageCertificateHistory;
 use App\Models\Regency;
@@ -106,5 +107,24 @@ class ApiDataController extends Controller
         $response = curl_exec($curl);
         curl_close($curl);
         return response()->json(['message' => $whatsappMessage]);
+    }
+
+    public function cekKartuKeluarga(Request $request) {
+        $nomorKK = $request->input('no_kk');
+
+        try {
+            $data = FamilyCard::where('family_number', $nomorKK)->first();
+            if ($data) {
+                return response()->json([
+                    'data' => $data,
+                    'status' => 'sukses',
+                ]);
+            }
+        } catch (\Exception $e) {
+            return response()->json([
+                'data' => $e,
+                'status' => 'gagal'
+            ]);
+        }
     }
 }

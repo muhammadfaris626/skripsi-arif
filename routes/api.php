@@ -13,3 +13,5 @@ Route::get('/get-district/{id}', [ApiDataController::class, 'getDistrict']);
 Route::get('/get-village/{id}', [ApiDataController::class, 'getVillage']);
 Route::get('/countCertificate/{username}', [ApiDataController::class, 'countCertificate']);
 Route::get('/testingWA', [ApiDataController::class, 'testingWhatsapp']);
+Route::post('/cek-kartu-keluarga', [ApiDataController::class, 'cekKartuKeluarga']);
+
