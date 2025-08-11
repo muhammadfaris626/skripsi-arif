@@ -15,7 +15,7 @@ const kkCheckMessage = ref('');
 const response = ref(null);
 
 const form = useForm({
-    no_kk: '7371141606230012',
+    no_kk: '',
     nama_lengkap: '',
     nik: '',
     gender: '',
